@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+
+	p.userGuessP , p.randStartNumberP {
+		font-size:90px;
+		font-family: 'Frijole', cursive;
+	}
+
+	h2.instructions2{
+		font-family: 'Frijole', cursive;
+		background-color: white;
+
+	}
+
+	h1.title{
+		font-family: 'Frijole', cursive;
+		
+
+	}
+
+	.instructions{
+		
+
+	}
+	h1.templeRun {
+    text-decoration: line-through;
+    font-family: 'Frijole', cursive;
+
+}
+	
+	body  {
+    background-image: url("border.jpg");
+    background-color: #cccccc;
+}
+	
+
+	</style>	
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron jumbo">
+  	<center><h1 class="templeRun">Temple Run</h1><center>
+  	
+    <center><h1 class="title"> Crystal Game! </h1></center>
+    
+  </div>
+
+
+<div class="container bodycontainer">
+	
+	<div class="row row1">
+		
+		<div class="col-lg-12 col-sm-6 col-md-6 instructions">
+
+			<h2 class="instructions2"> Use the crystals to try to match the score seen below. Click each crystal and determine its value then use it so that make it to the desired number! Good Luck and may the odds forever be in your favor! </h2>
+
+		
+		</div>
+
+	</div>
+
+	<div class="row borderRow">
+			<div class="col-lg-12 col-md-6 col-sm-6">
+
+
+			<img id="greentr" src="greentr.png" alt="Green Monkey" height="135" width="135">
+			<img id="monkeytr" src="monkeytr.png" alt="Mad Monkey" height="135" width="135">
+			<img id="purpleTR" src="purpleTR.jpg" alt="Crystal1" height="135" width="135">
+			<img id="greentr." src="greentr.png" alt="Crystal1" height="135" width="135">
+			<img id="templeduo" src="temple1.jpg" alt="Crystal1" height="135" width="270">
+			<img id="bear" src="beartr.png" alt="bear" height="135" width="135">
+			<img id="cobrafaceTR" src="cobrafaceTR.jpg" alt="Crystal1" height="135" width="135">
+
+
+
+
+
+
+	</div>
+
+	<div class="row row2">
+
+		<div class="col-lg-6 col-sm-6 col-md-6 crystalDiv">
+
+
+			<img id="1crystal" src="crystal1.png" alt="Crystal1" height="135" width="135">
+			<img id="2crystal" src="crystal2.png" alt="Crystal2" height="135" width="135">
+			<img id="3crystal" src="crystal3.jpeg" alt="Crystal3" height="135" width="135">
+			<img id="4crystal" src="crystal4.png" alt="Crystal4" height="135" width="135">
+
+		</div>
+
+		<div class="col-lg-2 col-sm- col-md-2 answerDiv">
+
+
+			<p id="userGuessP" class="userGuessP"> 0 </p>
+
+		</div>
+
+		<div class="col-lg-2 col-sm-2 col-md-2 randDiv">
+
+			<p id="randStartNumberP" class="randStartNumberP"> 0 </p>
+
+
+		</div>
+
+		<div class="col-lg-2 col-sm-2 col-md-2 EmptyDiv">
+		
+		</div>
+
+	
+	</div>
+
+	<div class="row rowReset">
+
+		<div class="col-lg-12 col-sm-12 col-md-12 resetDiv" align="center">
+
+		<center><button id="resetButton" class="btn btn-primary btn-lg btn-block"> Reset</button></center>
+
+		</div>
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+	var crystal1 = 0;
+	var crystal2 = 0;
+	var crystal3 = 0;
+	var crystal4 = 0;
+	var randStartNumber = 0;
+	var userScore = 0;
+	var scoreArray1 = [];
+	var scoreSum = 0;
+	
+
+
+
+	// making randStartNumber
+
+
+	randStartNumber = Math.floor(Math.random() * 250);
+	crystal1 = Math.floor(Math.random() * 10);
+	crystal2 = Math.floor(Math.random() * 15);
+	crystal3 = Math.floor(Math.random() * 5);
+	crystal4 = Math.floor(Math.random() * 2);
+
+	console.log(crystal1 + "," +crystal2 + "," + crystal3+ ","  +crystal4 + "," +  randStartNumber)
+
+	document.getElementById("randStartNumberP").innerHTML=randStartNumber;
+
+
+	function getSum(total, num){
+		return total + num;
+	}
+
+// button 1 onclick
+
+	document.getElementById("1crystal").onclick = function() {myRandomCrystal1()};
+// function that pushes input to array
+	function myRandomCrystal1() {
+	// scoreArray1.push(crystal1);
+	
+
+// 	console.log(scoreArray1);
+// 	// function that sums up array
+// 	console.log(scoreArray1.reduce(getSum));
+// // variable that holds number after being pushed to array
+// 	scoreSum = scoreArray1.reduce(getSum)
+	scoreSum += crystal1;
+	checkScore();
+// displays to html 
+	document.getElementById("userGuessP").innerHTML = scoreSum;
+}
+
+document.getElementById("2crystal").onclick = function() {myRandomCrystal2()}; 
+
+function myRandomCrystal2() {
+	scoreArray1.push(crystal2);
+	scoreSum = scoreArray1.reduce(getSum)
+	checkScore();
+
+	document.getElementById("userGuessP").innerHTML = scoreSum
+
+	console.log(crystal2)
+
+}
+
+
+document.getElementById("3crystal").onclick = function() {myRandomCrystal3()}; 
+
+function myRandomCrystal3() {
+	scoreArray1.push(crystal3);
+	scoreSum = scoreArray1.reduce(getSum)
+	checkScore();
+
+	document.getElementById("userGuessP").innerHTML = scoreSum
+
+	console.log(crystal3)
+}
+
+document.getElementById("4crystal").onclick = function() {myRandomCrystal4()}; 
+
+function myRandomCrystal4() {
+	scoreArray1.push(crystal4);
+	scoreSum = scoreArray1.reduce(getSum)
+	checkScore();
+
+	document.getElementById("userGuessP").innerHTML = scoreSum
+
+	console.log(crystal4)
+}
+
+function checkScore(){
+	if(scoreSum === randStartNumber){
+		alert('win');
+		
+	}else if (scoreSum > randStartNumber){
+		alert('loss')
+
+	}
+}
+
+/*document.getElementById("resetButton").onclick = function() {resetButton1()}; 
+
+function resetButton1(){
+randStartNumber = Math.floor(Math.random() * 250);
+	crystal1 = Math.floor(Math.random() * 10);
+	crystal2 = Math.floor(Math.random() * 15);
+	crystal3 = Math.floor(Math.random() * 5);
+	crystal4 = Math.floor(Math.random() * 2);
+
+	console.log(crystal1 + "," +crystal2 + "," + crystal3+ ","  +crystal4 + "," +  randStartNumber)
+	for (var i = 0; i < scoreArray1.length);{scoreArray1.pop();}
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
